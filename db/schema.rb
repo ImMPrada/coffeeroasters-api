@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_115131) do
     t.text "description", null: false
     t.integer "amount", null: false
     t.bigint "unit_id", null: false
+    t.decimal "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["unit_id"], name: "index_presentations_on_unit_id"

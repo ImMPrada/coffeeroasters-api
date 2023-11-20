@@ -5,5 +5,6 @@ FactoryBot.define do
     title { '10 capsules' }
     description { 'capsules for nespresso classic system' }
     amount { 10 }
+    price { 10 }
   end
 end
