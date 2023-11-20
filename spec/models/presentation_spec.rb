@@ -10,6 +10,8 @@ RSpec.describe Presentation, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:unit) }
+    it { is_expected.to have_many(:preference_presentations) }
+    it { is_expected.to have_many(:preferences) }
   end
 
   describe '#total_grames' do

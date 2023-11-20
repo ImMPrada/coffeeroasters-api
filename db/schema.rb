@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_20_131206) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_132502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "preference_presentations", force: :cascade do |t|
+    t.bigint "preference_id", null: false
+    t.bigint "presentation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["preference_id"], name: "index_preference_presentations_on_preference_id"
+    t.index ["presentation_id"], name: "index_preference_presentations_on_presentation_id"
+  end
 
   create_table "preferences", force: :cascade do |t|
     t.text "title", null: false
@@ -40,5 +49,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_131206) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "preference_presentations", "preferences"
+  add_foreign_key "preference_presentations", "presentations"
   add_foreign_key "presentations", "units"
 end
