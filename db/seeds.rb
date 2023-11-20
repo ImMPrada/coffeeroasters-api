@@ -12,6 +12,7 @@ PreferencePresentation.destroy_all
 Presentation.destroy_all
 Unit.destroy_all
 Preference.destroy_all
+Type.destroy_all
 
 grames_unit = Unit.create(used_symbol: 'g', description: 'a grame is 1 grames', grames: 1.00)
 capsules_unit = Unit.create(used_symbol: 'nessclassic', description: 'a capsule of classic nespresso, is 15.5 grames', grames: 15.5)
@@ -43,3 +44,7 @@ PreferencePresentation.create(preference: pref_filter, presentation: mass1000)
 PreferencePresentation.create(preference: pref_espresso, presentation: mass250)
 PreferencePresentation.create(preference: pref_espresso, presentation: mass500)
 PreferencePresentation.create(preference: pref_espresso, presentation: mass1000)
+
+Type.create(title: 'Single Origin', description: 'Distinct, high quality coffee from a specific family-owned farm')
+Type.create(title: 'Decaf', description: 'Just like regular coffee, except the caffeine has been removed')
+Type.create(title: 'Blended', description: 'Combination of two or three dark roasted beans of organic coffees')
