@@ -10,8 +10,80 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_143703) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "frecuencies", force: :cascade do |t|
+    t.text "title", null: false
+    t.text "description", null: false
+    t.integer "monthly_amount", null: false
+    t.decimal "base_price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "grinds", force: :cascade do |t|
+    t.text "title", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "preference_grinds", force: :cascade do |t|
+    t.bigint "preference_id", null: false
+    t.bigint "grind_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grind_id"], name: "index_preference_grinds_on_grind_id"
+    t.index ["preference_id"], name: "index_preference_grinds_on_preference_id"
+  end
+
+  create_table "preference_presentations", force: :cascade do |t|
+    t.bigint "preference_id", null: false
+    t.bigint "presentation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["preference_id"], name: "index_preference_presentations_on_preference_id"
+    t.index ["presentation_id"], name: "index_preference_presentations_on_presentation_id"
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.text "title", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "presentations", force: :cascade do |t|
+    t.text "title", null: false
+    t.text "description", null: false
+    t.integer "amount", null: false
+    t.bigint "unit_id", null: false
+    t.decimal "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_presentations_on_unit_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.text "title", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "used_symbol", null: false
+    t.text "description"
+    t.decimal "grames", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "preference_grinds", "grinds"
+  add_foreign_key "preference_grinds", "preferences"
+  add_foreign_key "preference_presentations", "preferences"
+  add_foreign_key "preference_presentations", "presentations"
+  add_foreign_key "presentations", "units"
 end
