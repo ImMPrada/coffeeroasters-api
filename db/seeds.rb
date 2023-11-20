@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+PreferenceGrind.destroy_all
 PreferencePresentation.destroy_all
 Presentation.destroy_all
 Unit.destroy_all
@@ -37,6 +38,19 @@ pref_capsules = Preference.create(title:'Capsule', description:'Compatible with 
 pref_filter = Preference.create(title:'Filter', description:'For pour over or drip methods like Aeropress, Chemex, and V60')
 pref_espresso = Preference.create(title:'Espresso', description:'Dense and finely ground beans for an intense, flavorful experience')
 
+wholebean = Grind.create(title: 'Wholebean', description: 'Best choice if you cherish the full sensory experience')
+filter = Grind.create(title: 'Filter', description: 'For drip or pour-over coffee methods such as V60 or Aeropress')
+cafetere = Grind.create(title: 'Cafetiére', description: 'Course ground beans specially suited for french press coffee')
+nespresso = Grind.create(title: 'Nespresso', description: 'Just what needed for nespresso system')
+
+Type.create(title: 'Single Origin', description: 'Distinct, high quality coffee from a specific family-owned farm')
+Type.create(title: 'Decaf', description: 'Just like regular coffee, except the caffeine has been removed')
+Type.create(title: 'Blended', description: 'Combination of two or three dark roasted beans of organic coffees')
+
+Frecuency.create(title: 'Every month', description: '$12.00 per shipment. Includes free priority shipping.', monthly_amount: 1, base_price: 12.00)
+Frecuency.create(title: 'Every 2 weeks', description: '$9.60 per shipment. Includes free priority shipping.', monthly_amount: 2, base_price: 9.60)
+Frecuency.create(title: 'Every week', description: '$7.20 per shipment. Includes free first-class shipping.', monthly_amount: 4, base_price: 7.20)
+
 PreferencePresentation.create(preference: pref_capsules, presentation: caps15)
 PreferencePresentation.create(preference: pref_capsules, presentation: caps50)
 PreferencePresentation.create(preference: pref_capsules, presentation: caps90)
@@ -47,14 +61,10 @@ PreferencePresentation.create(preference: pref_espresso, presentation: mass250)
 PreferencePresentation.create(preference: pref_espresso, presentation: mass500)
 PreferencePresentation.create(preference: pref_espresso, presentation: mass1000)
 
-Type.create(title: 'Single Origin', description: 'Distinct, high quality coffee from a specific family-owned farm')
-Type.create(title: 'Decaf', description: 'Just like regular coffee, except the caffeine has been removed')
-Type.create(title: 'Blended', description: 'Combination of two or three dark roasted beans of organic coffees')
-
-Frecuency.create(title: 'Every month', description: '$12.00 per shipment. Includes free priority shipping.', monthly_amount: 1, base_price: 12.00)
-Frecuency.create(title: 'Every 2 weeks', description: '$9.60 per shipment. Includes free priority shipping.', monthly_amount: 2, base_price: 9.60)
-Frecuency.create(title: 'Every week', description: '$7.20 per shipment. Includes free first-class shipping.', monthly_amount: 4, base_price: 7.20)
-
-Grind.create(title: 'Wholebean', description: 'Best choice if you cherish the full sensory experience')
-Grind.create(title: 'Filter', description: 'For drip or pour-over coffee methods such as V60 or Aeropress')
-Grind.create(title: 'Cafetiére', description: 'Course ground beans specially suited for french press coffee')
+PreferenceGrind.create(preference: pref_capsules, grind: wholebean)
+PreferenceGrind.create(preference: pref_capsules, grind: filter)
+PreferenceGrind.create(preference: pref_capsules, grind: cafetere)
+PreferenceGrind.create(preference: pref_filter, grind: wholebean)
+PreferenceGrind.create(preference: pref_filter, grind: filter)
+PreferenceGrind.create(preference: pref_filter, grind: cafetere)
+PreferenceGrind.create(preference: pref_espresso, grind: nespresso)

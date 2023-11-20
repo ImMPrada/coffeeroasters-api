@@ -9,5 +9,7 @@ RSpec.describe Preference, type: :model do
   describe 'associations' do
     it { is_expected.to have_many(:preference_presentations) }
     it { is_expected.to have_many(:presentations) }
+    it { is_expected.to have_many(:preference_grinds) }
+    it { is_expected.to have_many(:grinds) }
   end
 end
