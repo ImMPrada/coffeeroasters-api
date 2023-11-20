@@ -13,6 +13,7 @@ Presentation.destroy_all
 Unit.destroy_all
 Preference.destroy_all
 Type.destroy_all
+Frecuency.destroy_all
 
 grames_unit = Unit.create(used_symbol: 'g', description: 'a grame is 1 grames', grames: 1.00)
 capsules_unit = Unit.create(used_symbol: 'nessclassic', description: 'a capsule of classic nespresso, is 15.5 grames', grames: 15.5)
@@ -48,3 +49,7 @@ PreferencePresentation.create(preference: pref_espresso, presentation: mass1000)
 Type.create(title: 'Single Origin', description: 'Distinct, high quality coffee from a specific family-owned farm')
 Type.create(title: 'Decaf', description: 'Just like regular coffee, except the caffeine has been removed')
 Type.create(title: 'Blended', description: 'Combination of two or three dark roasted beans of organic coffees')
+
+Frecuency.create(title: 'Every month', description: '$12.00 per shipment. Includes free priority shipping.', monthly_amount: 1, base_price: 12.00)
+Frecuency.create(title: 'Every 2 weeks', description: '$9.60 per shipment. Includes free priority shipping.', monthly_amount: 2, base_price: 9.60)
+Frecuency.create(title: 'Every week', description: '$7.20 per shipment. Includes free first-class shipping.', monthly_amount: 4, base_price: 7.20)
