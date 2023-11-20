@@ -14,6 +14,7 @@ Unit.destroy_all
 Preference.destroy_all
 Type.destroy_all
 Frecuency.destroy_all
+Grind.destroy_all
 
 grames_unit = Unit.create(used_symbol: 'g', description: 'a grame is 1 grames', grames: 1.00)
 capsules_unit = Unit.create(used_symbol: 'nessclassic', description: 'a capsule of classic nespresso, is 15.5 grames', grames: 15.5)
@@ -53,3 +54,7 @@ Type.create(title: 'Blended', description: 'Combination of two or three dark roa
 Frecuency.create(title: 'Every month', description: '$12.00 per shipment. Includes free priority shipping.', monthly_amount: 1, base_price: 12.00)
 Frecuency.create(title: 'Every 2 weeks', description: '$9.60 per shipment. Includes free priority shipping.', monthly_amount: 2, base_price: 9.60)
 Frecuency.create(title: 'Every week', description: '$7.20 per shipment. Includes free first-class shipping.', monthly_amount: 4, base_price: 7.20)
+
+Grind.create(title: 'Wholebean', description: 'Best choice if you cherish the full sensory experience')
+Grind.create(title: 'Filter', description: 'For drip or pour-over coffee methods such as V60 or Aeropress')
+Grind.create(title: 'Cafetiére', description: 'Course ground beans specially suited for french press coffee')
