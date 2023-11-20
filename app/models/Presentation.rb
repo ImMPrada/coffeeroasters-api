@@ -4,4 +4,8 @@ class Presentation < ApplicationRecord
   validates :amount, presence: true
 
   belongs_to :unit
+
+  def total_grames
+    amount * unit.grames
+  end
 end
